@@ -13,7 +13,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
 
-  WeatherModel weatherModel = WeatherModel();
+  WeatherModel weather = WeatherModel();
 
   int temperature;
   String weatherIcon;
@@ -27,12 +27,18 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
+      if (weatherData == null) {
+        temperature = 0;
+        weatherIcon = '';
+        weatherMessage = 'Unable to get weather data';
+        return;
+      }
       double temp = weatherData['main']['temp'];
       temperature = temp.toInt();
       var condition = weatherData['weather'][0]['id'];
-      weatherIcon = weatherModel.getWeatherIcon(condition);
+      weatherIcon = weather.getWeatherIcon(condition);
       var city = weatherData['name'];
-      weatherMessage = weatherModel.getMessage(temperature) + ' in $city!';
+      weatherMessage = weather.getMessage(temperature) + ' in $city';
     });
   }
 
@@ -58,14 +64,19 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var weatherData = weather.getLocationWeather();
+                      updateUI(weatherData);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     child: Icon(
                       Icons.location_city,
                       size: 50.0,
