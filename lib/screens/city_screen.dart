@@ -26,6 +26,7 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
+                  style: kElevatedButtonStyle,
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -48,6 +49,7 @@ class _CityScreenState extends State<CityScreen> {
                 ),
               ),
               ElevatedButton(
+                style: kElevatedButtonStyle,
                 onPressed: () {
                   Navigator.pop(context, cityName);
                 },

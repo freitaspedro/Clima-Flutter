@@ -37,3 +37,8 @@ const kTextFieldInputDecoration = InputDecoration(
     borderSide: BorderSide.none,
   ),
 );
+
+ButtonStyle kElevatedButtonStyle = ElevatedButton.styleFrom(
+  elevation: 0.0,
+  backgroundColor: Colors.transparent,
+);

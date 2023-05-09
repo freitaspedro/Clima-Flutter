@@ -65,6 +65,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   ElevatedButton(
+                    style: kElevatedButtonStyle,
                     onPressed: () {
                       var weatherData = weather.getLocationWeather();
                       updateUI(weatherData);
@@ -75,6 +76,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   ElevatedButton(
+                    style: kElevatedButtonStyle,
                     onPressed: () async {
                       var typedName = await Navigator.push(
                         context,
